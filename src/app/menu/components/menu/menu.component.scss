@@ -1,0 +1,140 @@
+.toolbar-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.menu-item {
+    font-size: 110%;
+}
+
+.header-toolbar {
+    padding: 0px 2px;
+    background: linear-gradient(to right, rgba(71, 115, 178, 255), rgba(105, 188, 187, 255));
+    position: fixed;
+    z-index: 2;
+}
+
+h2.menu-app-name {
+    color: #ffffff;
+    margin-right: 20px;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.icon {
+    padding-left: 5px;
+    color: #ffffff;
+}
+
+#icon-person {
+    margin-left: 84%;
+    color: #ffffff;
+}
+
+#user {
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-right: 5%;
+    color: #ffffff;
+}
+
+#icon-exit {
+    margin-left: 4%;
+}
+
+.menu-logo {
+    margin: 100px 0px 0px 15px;
+    width: 180px;
+    object-fit: cover;
+}
+
+.sidenav-container {
+    flex: 1;
+}
+
+.content {
+    background-color: #ffffff;
+}
+
+.sidenav {
+    background: linear-gradient(to bottom, rgba(71, 115, 178, 255), rgba(105, 188, 187, 255));
+
+    a {
+        color: #ffffff;
+    }
+}
+
+.active {
+    background-color: rgba(236, 108, 67, 255);
+}
+
+
+
+@media only screen and (max-width: 770px) {
+    h2.menu-app-name {
+        margin-right: 15px;
+        font-size: 15px;
+    }
+}
+
+@media only screen and(max-width:750px) {
+    .sidenav {
+        width: 100%;
+
+        .nav-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    h2.menu-app-name {
+        margin-right: 5px;
+        font-size: 11px;
+    }
+
+    .icon {
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+
+}
+
+#boton {
+    background-color: transparent;
+    color: white;
+    border: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+#boton:hover {
+    background-color: rgba(236, 108, 67, 255);
+    color: white;
+}
+
+#menuHijo {
+    list-style: none;
+
+}
+
+#menuHijo:hover {
+    background-color: rgba(236, 108, 67, 255);
+
+}
+
+li {
+    list-style: none;
+}

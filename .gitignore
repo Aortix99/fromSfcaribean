@@ -1,0 +1,81 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+#amplify-do-not-edit-begin
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/logs
+amplify/mock-data
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation
+amplify/backend/.temp
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplifyconfiguration.dart
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
+.secret-*
+**.sample
+#amplify-do-not-edit-end
+sonar-scanner.properties
+sonar-project.properties
+.scannerwork/.sonar_lock
+.scannerwork/report-task.txt
+.scannerwork/css-bundle/stylelintconfig.json
+.scannerwork/css-bundle/bin/server
+.scannerwork/css-bundle/lib/tsconfig.tsbuildinfo
+.scannerwork/css-bundle/lib/src/server.d.ts
+.scannerwork/css-bundle/lib/src/server.js
+.scannerwork/css-bundle/lib/src/server.js.map
+.scannerwork/css-bundle/package/package.json
+.scannerwork/css-bundle/package/yarn.lock
+.scannerwork/
+package-lock.json

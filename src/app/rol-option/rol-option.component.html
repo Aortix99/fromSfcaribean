@@ -1,0 +1,58 @@
+<div>
+    <button class="filter-button2" routerLink="/asignacion-de-roles" routerLinkActive='active' mat-icon>
+        <mat-icon style="margin-top: 10%;">arrow_back</mat-icon>
+    </button>
+    <h3 id="titulo">Administración de opciones por roles</h3>
+</div>
+
+<br>
+
+<div id="rol">
+    <h5 class="cliente">Rol</h5>
+    <p id="filter">{{cdrol}}</p>
+</div>
+
+<div id="cont-padre">
+    <mat-card *ngFor="let item of datosOpcionPadre " class="card">
+        <h4 id="cdopcion">{{item.cdopcion}}</h4>
+        <button id="btn-mostrar" (click)="mostrarOpcionHijo(item.nmid)">
+            <abbr title="Configuración">
+                <mat-icon>settings</mat-icon>
+            </abbr>
+        </button>
+    </mat-card>
+</div>
+
+<div id="cont-hijo" [class.active]="opcionHijo">
+
+    <h2 id="titulo-hijo">Opciones hijo</h2>
+    <br>
+    <br>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="table"
+        class="table table-bordered hover table-borderless">
+        <thead>
+            <tr>
+                <th style="text-align:center">Nombre opción</th>
+                <th style="text-align:center">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="text-align:center;" *ngFor="let item of datosRolOpcion">
+                <td style="margin-top: 3%;">{{item.cdopcion}}</td>
+                <td style="margin-top: 3%;">
+                    <mat-checkbox [(ngModel)]="item.selected" [checked]="item.selected" color="primary">
+                    </mat-checkbox>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+        <button class="close" type="button" (click)="guardar(item)">
+            Guardar
+        </button>
+        <button class="close" type="button" (click)="cerrarOpcionHijo()">
+            Cancelar
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,21 @@
+trigger:
+- master
+- qa
+- dev
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Shared/continuous-deployment
+      ref: 'refs/heads/feature/ruta-lavado-cafe'
+
+extends:
+  template: master-extends.yml@templates
+  parameters:
+    technology: 'node'
+    cloudName: 'aws'
+    appName: 'lavado-cafe'
+    agentEndpoint: 'devsecops-ecr-connection'
+    deployType: 'fronts3'
+    functionalRepo: '3981-ruta_lavado_cafe-selenium'

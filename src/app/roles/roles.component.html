@@ -1,0 +1,99 @@
+<ng-template class="template" #content let-c="close" let-d="dismiss">
+    <form [formGroup]="myForm" (ngSubmit)="guardar(myForm)" errorTailor>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Rol</h4>
+            <button (click)="refresh()" type="button" class="btn-close" aria-label="Close"
+                (click)="d('Cross click')"></button>
+        </div>
+
+
+        <div class="modal-body" mat-icon>
+            <div class="cont-nombre">
+                <mat-icon id="icon-client">account_circle</mat-icon>
+                <input [controlErrorsTpl]="Error" class="controls" formControlName="cdrol" type="text"
+                    placeholder="Ingrese nombre">
+            </div>
+            <ng-template let-error let-text="text" #Error>
+                <!-- {{error|json}}{{text}} -->
+
+                <div *ngIf="error?.minlength">
+                    <i> <b>Error:</b>No comples con los caracteres minomos que son
+                        ({{error?.minlength?.requiredLength}}),ingresaste
+                        solo:({{error?.minlength?.actualLength}})</i>
+                </div>
+            </ng-template>
+            <br>
+            <div class="cont-nombre">
+                <mat-icon id="icon-client">account_circle</mat-icon>
+                <input [controlErrorsTpl]="Error" class="controls" formControlName="dsrol" type="text"
+                    placeholder="Ingrese descripción">
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button type="submit" [disabled]="myForm.invalid" class="save">
+                <abbr title="Guardar y agregar">
+                    <mat-icon id="icon-button">save add</mat-icon>
+                </abbr>
+            </button>
+
+            <button (click)="refresh()" type="submit" [disabled]="myForm.invalid" class="save-exit"
+                (click)="d('Cross click')">
+                <abbr title="Guardar y salir">
+                    <mat-icon id="icon-button">save subdirectory_arrow_right</mat-icon>
+                </abbr>
+            </button>
+            <button (click)="refresh()" class="close" type="button" (click)="d('Cross click')">
+                Cancelar
+            </button>
+
+
+        </div>
+    </form>
+</ng-template>
+
+
+
+<h3 id="titulo">Administrador de roles</h3><br>
+<input class="from_control" id="filter" type="text" placeholder="Buscar..." [(ngModel)]="filterPost" name="filterPosts">
+
+<button class="lanzar" mat-icon (click)="open(content)" mat-list-item>
+    Nuevo<mat-icon id="icon-add"> add_circle</mat-icon>
+</button>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="table"
+    class="table table-bordered hover table-borderless">
+    <thead>
+        <tr>
+            <th style="text-align:center">Id</th>
+            <th style="text-align:center">Nombre rol</th>
+            <th style="text-align:center">Descripción</th>
+            <th style="text-align:center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="text-align:center;" *ngFor="let item of datosRoles | filterRol:filterPost">
+            <td style="margin-top: 3%;">{{item.nmid}}</td>
+            <td style="margin-top: 3%;">{{item.cdrol}}</td>
+            <td style="margin-top: 3%;">{{item.dsrol}}</td>
+            <td>
+
+                <button class="edit" mat-icon (click)="editar(item)" (click)="open(content)">
+                    <abbr title="Editar">
+                        <mat-icon>
+                            edit</mat-icon>
+                    </abbr>
+                </button>
+                <button class="edit2" mat-icon (click)="mostrar(item)">
+                    <abbr title="Opciones">
+                        <mat-icon>
+                            manage_accounts</mat-icon>
+                    </abbr>
+                </button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

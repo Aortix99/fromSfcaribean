@@ -1,0 +1,56 @@
+<div class="toolbar-container">
+    <mat-toolbar class="header-toolbar">
+        <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon class="icon">menu</mat-icon>
+        </button>
+
+
+        <mat-icon id="icon-person">person</mat-icon>
+        <p id="user">{{usuario}}</p>
+
+
+
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]='mobileQuery.matches ? 56 : 0'>
+        <mat-sidenav #snav [mode]='mobileQuery.matches ? "over" : "side"' [fixedInViewport]='mobileQuery.matches'
+            fixedTopGap="56" class="sidenav">
+            <mat-nav-list class="nav-list">
+                <div>
+                    <img src="../../../../assets/utils/LogoSoftcaribbean.png" class="menu-logo">
+                </div>
+                <div class="items__container">
+
+
+                    <div id="header">
+                        <div class="lista">
+                            <div>
+                                <button id="boton" (click)="mostrarHijo(item.nmid)"
+                                    *ngFor="let item of datosOpcionPadre">
+                                    <mat-icon>{{item.dsicono}}</mat-icon>{{item.cdopcion}}
+                                </button>
+                                <li *ngIf="isShown">
+                                    <ul>
+                                        <li id="menuHijo" *ngFor="let item2 of datosOpcionidpadre">
+
+                                            <a [routerLink]="item2.dsurl">
+                                                <mat-icon>{{item2.dsicono}}</mat-icon>{{item2.cdopcion}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <amplify-sign-out></amplify-sign-out>
+                </div>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content class="content">
+            <br><br><br>
+            <block-ui>
+                <router-outlet></router-outlet>
+            </block-ui>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

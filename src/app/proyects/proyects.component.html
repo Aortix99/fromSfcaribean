@@ -1,0 +1,128 @@
+<ng-template class="template" #content let-c="close" let-d="dismiss">
+    <form [formGroup]="myForm" (ngSubmit)="guardar(myForm)" errorTailor>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Proyecto</h4>
+            <button (click)="refresh()" type="button" id="btn-close" class="btn-close" aria-label="Close"
+                (click)="d('Cross click')"></button>
+        </div>
+
+
+        <div class="modal-body">
+            <div class="cont-nombre">
+                <mat-icon id="icon-estado"> account_circle</mat-icon>
+                <select class="option" name="combo" formControlName="nmclienteid_proy" [controlErrorsTpl]="Error">
+                    <option *ngFor="let item of datosClientes" [ngValue]="item.nmid">
+                        {{item.dscliente}}
+                    </option>
+                </select>
+            </div>
+            <br>
+            <div class="cont-nombre">
+                <mat-icon id="icon-client">folder</mat-icon>
+                <input class="controls" formControlName="dsproyecto" type="text"
+                    placeholder="Ingrese Nombre Del Proyecto" [controlErrorsTpl]="Error">
+            </div>
+            <ng-template let-error let-text="text" #Error>
+                <!-- {{error|json}}{{text}} -->
+
+                <div *ngIf="error?.minlength">
+                    <i> <b>Error:</b>No comples con los caracteres minomos que son
+                        ({{error?.minlength?.requiredLength}}),ingresaste
+                        solo:({{error?.minlength?.actualLength}})</i>
+                </div>
+            </ng-template>
+            <br>
+            <div class="cont-nombre">
+                <mat-icon id="icon-estado"> edit_attributes</mat-icon><select class="option" name="combo"
+                    formControlName="cdestado" [controlErrorsTpl]="Error">
+                    <option value="A">Activo</option>
+                    <option value="I">Inactivo</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button type="submit" [disabled]="myForm.invalid" class="save">
+                <abbr title="Guardar y agregar">
+                    <mat-icon id="icon-button">save add</mat-icon>
+                </abbr>
+            </button>
+
+            <button type="submit" [disabled]="myForm.invalid" class="save-exit" (click)="d('Cross click')">
+                <abbr title="Guardar y salir">
+                    <mat-icon id="icon-button">save subdirectory_arrow_right</mat-icon>
+                </abbr>
+            </button>
+            <button (click)="refresh()" class="close" type="button" (click)="d('Cross click')">
+                Cancelar
+            </button>
+
+
+        </div>
+    </form>
+</ng-template>
+
+<h3 id="titulo">Administrador de proyectos</h3><br>
+<input class="from_control" id="filter" type="text" placeholder="Buscar..." [(ngModel)]="filterPost" name="filterPosts">
+
+<button class="lanzar" mat-icon (click)="open(content)" mat-list-item>
+    Nuevo<mat-icon id="icon-add"> add_circle</mat-icon>
+
+</button>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="table"
+    class="table table-bordered hover table-borderless">
+    <thead>
+        <tr>
+            <th style="text-align:center">Id</th>
+            <th style="text-align:center">Nombre cliente</th>
+            <th style="text-align:center">Nombre proyecto</th>
+            <th style="text-align:center">Estado</th>
+            <th style="text-align:center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of datosProyecto | filterProject:filterPost">
+            <td style="margin-top: 5%; text-align: center;">{{item.nmid}}</td>
+            <td style="margin-top: 5%; text-align: center;">{{item.dscliente}}</td>
+            <td style="margin-top: 5%; text-align: center;">{{item.dsproyecto}}</td>
+            <td style="margin-top: 5%; text-align: center;">{{item.cdestado==='A'?'Activo':'Inactivo'}}</td>
+            <td>
+
+
+                <button class="edid" mat-icon (click)="editar(item)" (click)="open(content)">
+                    <mat-icon>edit
+                    </mat-icon>
+                </button>
+
+                <a class="config" (click)="mostrar(item)" mat-list-item id="link-rol-menu">
+                    <abbr title="Configuración">
+                        <mat-icon>
+                            settings
+                        </mat-icon>
+                    </abbr>
+                </a>
+                <a class="colaborators" (click)="mostrar2(item)" mat-list-item id="link-rol-menu">
+                    <abbr title="Colaboradores">
+                        <mat-icon>
+                            group</mat-icon>
+                    </abbr>
+                </a>
+                <a class="artefacs" ((click)="snav.toggle()" mat-list-item routerLink="/artefactos-de-proyecto"
+                    routerLinkActive='active' id="link-rol-menu">
+                    <abbr title="Artefactos">
+                        <mat-icon>
+                            list_alt
+                        </mat-icon>
+                    </abbr>
+                </a>
+
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>

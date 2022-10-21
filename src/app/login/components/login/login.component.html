@@ -1,0 +1,12 @@
+<div class="login">
+    <div class="img__container">
+        <img class="logo-img" src="../../../../assets/utils/LogoSoftcaribbean.png" alt="logo img" width="200px">
+    </div>
+    <amplify-authenticator>
+        <amplify-sign-in hide-sign-up slot="sign-in">
+            <amplify-sign-in-button slot="federated-buttons" (click)="singleSSO()">
+                Iniciar sesión con SSO
+            </amplify-sign-in-button>
+        </amplify-sign-in>
+    </amplify-authenticator>
+</div>

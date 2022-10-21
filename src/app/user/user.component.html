@@ -1,0 +1,134 @@
+<!-- ============ MODAL PARA AGREGAR =============== -->
+<ng-template class="template" #content let-c="close" let-d="dismiss">
+  <form [formGroup]="myForm" (ngSubmit)="Guardar(myForm)" errorTailor>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Nuevo Usuario</h4>
+      <button (click)="refresh()" type="button" class="btn-close" aria-label="Close"
+        (click)="d('Cross click')"></button>
+    </div>
+
+    <div class="modal-body" mat-icon>
+      <div class="cont-usuario">
+        <mat-icon class="icons_usuario">account_circle</mat-icon>
+        <input class="controls" formControlName="cdusuario" type="text" placeholder="Usuario"
+          [controlErrorsTpl]="Error">
+      </div>
+      <ng-template let-error let-text="text" #Error>
+        <!-- {{error|json}}{{text}} -->
+
+        <div *ngIf="error?.minlength">
+          <i> <b>Error:</b>No comples con los caracteres minomos que son
+            ({{error?.minlength?.requiredLength}}),ingresaste
+            solo:({{error?.minlength?.actualLength}})</i>
+        </div>
+      </ng-template>
+      <br>
+      <div class="cont-nombre">
+        <mat-icon class="icons_usuario">face</mat-icon>
+        <input class="controls" formControlName="dsnombre" type="text" placeholder="Nombre y Apellidos"
+          [controlErrorsTpl]="Error">
+      </div>
+      <br>
+      <div class="cont-email">
+        <mat-icon class="icons_usuario">contact_mail</mat-icon>
+        <input class="controls" formControlName="cdcorreo" type="email" placeholder="Correo electronico" required>
+      </div>
+      <br>
+      <div class="cont-contraseña">
+        <mat-icon class="icons_usuario">key</mat-icon>
+        <input class="controls" formControlName="cdpassword" type="password" placeholder="Contraseña*"
+          autocomplete="new-password" [controlErrorsTpl]="Error">
+      </div>
+      <br>
+      <div class="cont-rol">
+        <mat-icon class="icons_usuario">assignment_ind</mat-icon>
+        <select class="option" name="combo" formControlName="cdrol" [controlErrorsTpl]="Error">
+          <option selected hidden value="">Seleccione el rol</option>
+          <option value="Admin">Admin</option>
+          <option value="Programador">Programador</option>
+        </select>
+      </div>
+      <br>
+      <div class="cont-tipouser">
+        <mat-icon class="icons_usuario">settings_accessibility</mat-icon>
+        <select class="option" name="combo" formControlName="cdinterno" [controlErrorsTpl]="Error">
+          <option selected hidden value="">Interno</option>
+          <option value="S">SI</option>
+          <option value="N">NO</option>
+        </select>
+      </div>
+      <br>
+      <div class="cont-estado">
+        <mat-icon class="icons_usuario">edit_attributes</mat-icon><select class="option" name="combo"
+          formControlName="cdestado" [controlErrorsTpl]="Error">
+          <option selected hidden value="">Seleccione un estado</option>
+          <option value="A">Activo</option>
+          <option value="I">Inactivo</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button title="Guardar y agregar" type="submit" class="save" (click)="errorbutton()" [disabled]="myForm.invalid">
+        <mat-icon id="icon-button">save add</mat-icon>
+      </button>
+
+      <button title="Guardar y salir" (click)="refresh()" type="submit" class="save-exit" (click)="d('Cross click')"
+        (click)="errorbutton()" [disabled]="myForm.invalid">
+        <mat-icon id="icon-button">save subdirectory_arrow_right</mat-icon>
+      </button>
+
+      <button (click)="refresh()" class="close" type="button" (click)="d('Cross click')">
+        Cancelar
+      </button>
+
+    </div>
+  </form>
+</ng-template>
+
+
+
+
+<!-- =========== VISTA PRINCIPAL ============== -->
+<div id="titulo">
+  <h3>Administrador de usuarios</h3>
+  <br>
+</div>
+<br>
+<input class="from_control" id="filter" type="text" placeholder='Buscar...' name="filterPosts">
+
+<button class="lanzar" mat-icon (click)="open(content)" mat-list-item>
+  Nuevo<mat-icon id="icon-add"> add_circle</mat-icon>
+</button>
+
+<table id="table" class="table table-bordered hover table-borderless">
+  <thead>
+    <tr>
+      <th style="text-align:center">Id</th>
+      <th style="text-align:center">Nombre y apellido</th>
+      <th style="text-align:center">Correo</th>
+      <th style="text-align:center">Rol</th>
+      <th style="text-align:center">Interno</th>
+      <th style="text-align:center">Estado</th>
+      <th style="text-align:center; width: 250px;">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align:center;" *ngFor="let item of datosUsuarios">
+      <td style="margin-top: 3%;">{{ item.nmid }}</td>
+      <td style="margin-top: 3%;">{{ item.dsnombre }}</td>
+      <td style="margin-top: 3%;">{{ item.cdcorreo }}</td>
+      <td style="margin-top: 3%;">{{ item.cdrol }}</td>
+      <td style="margin-top: 3%;">{{ item.cdinterno === "S" ? "SI" : "NO"}}</td>
+      <td style="margin-top: 3%;">{{ item.cdestado === "A" ? "Activo" : "Inactivo"}}</td>
+      <td>
+
+        <button class="edit" mat-icon (click)="Editar(item)" (click)="open(content)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

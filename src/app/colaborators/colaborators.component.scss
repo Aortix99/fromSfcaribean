@@ -1,0 +1,360 @@
+#titulo {
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+
+
+.controls {
+    width: 66%;
+    height: calc(10vh - 6px);
+    margin-left: 22%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: white;
+    border-width: thin;
+    text-decoration: none;
+    outline: none;
+    border-color: rgba(71, 115, 178, 255);
+    color: rgba(71, 115, 178, 255);
+}
+
+
+.modal-title {
+    color: rgb(24, 21, 15);
+    margin-left: 26%;
+}
+
+.modal-header {
+    background-color: white;
+    border-color: white;
+}
+
+.modal-body {
+    background-color: white;
+    border-color: white;
+}
+
+.modal-footer {
+    background-color: white;
+    border-color: white;
+}
+
+.btn-outline-dark {
+    width: auto;
+    height: calc(10vh - 6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.lanzar {
+    background-color: rgba(71, 115, 178, 255);
+    border-radius: 0.5rem;
+    outline: none;
+    margin-top: 5%;
+    height: 3em;
+    margin-left: 14%;
+    display: inline-block;
+    position: sticky;
+    border-color: rgba(71, 115, 178, 255);
+    border-style: none;
+    color: white;
+    width: 12%;
+    text-align: left;
+    padding-left: 3%;
+}
+
+.lanzar:hover {
+    background-color: rgba(105, 188, 187, 255)
+}
+
+.from_control {
+    background-color: gainsboro;
+    align-items: center;
+    display: inline-block;
+    margin-left: 5%;
+}
+
+#form-proyec {
+    border-radius: 1rem;
+    margin-left: 5%;
+    margin-top: 3%;
+    display: inline-block;
+    width: 18%;
+}
+
+#form-client {
+    align-items: center;
+    display: inline-block;
+    margin-left: 5%;
+    width: 18%;
+}
+
+
+
+.save {
+    background-color: white;
+    border-radius: 0.5rem;
+    margin-right: 8%;
+    width: 20%;
+    height: 50px;
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    outline: none;
+    border-color: rgba(71, 115, 178, 255);
+    color: rgba(71, 115, 178, 255);
+    display: inline-block;
+    text-align: left;
+}
+
+.save:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+}
+
+.save-exit {
+    background-color: white;
+    border-radius: 0.5rem;
+    margin-right: 8%;
+    width: 20%;
+    height: 50px;
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    outline: none;
+    border-color: rgba(71, 115, 178, 255);
+    color: rgba(71, 115, 178, 255);
+    display: inline-block;
+    text-align: left;
+}
+
+.save-exit:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+}
+
+.close {
+    background-color: white;
+    border-radius: 0.5rem;
+    margin-right: 10%;
+    width: 20%;
+    height: 50px;
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    outline: none;
+    border-color: rgba(71, 115, 178, 255);
+    color: rgba(71, 115, 178, 255);
+    display: inline-block;
+}
+
+.close:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+}
+
+.option {
+    background-color: white;
+    border-color: rgba(71, 115, 178, 255);
+    color: rgba(71, 115, 178, 255);
+    width: 66%;
+    height: calc(10vh - 6px);
+    margin-left: 22%;
+    display: flex;
+    text-decoration: none;
+    outline: none;
+    align-items: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    align-content: center;
+}
+
+#table {
+    border-radius: 1rem;
+    margin-top: 2%;
+    width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    box-shadow: 0px 2px 10px -6px black;
+
+}
+
+
+tbody {
+    border-radius: 1rem;
+}
+
+th {
+    background-color: rgba(243, 244, 246, 255);
+    border: none;
+    border-top: white;
+}
+
+td {
+    background-color: white;
+    border-color: white;
+}
+
+
+.edit {
+    background-color: rgba(71, 115, 178, 255);
+    width: 15%;
+    border-radius: 0.5rem;
+    display: inline-block;
+    border: solid;
+    border-width: thin;
+    border-color: rgba(71, 115, 178, 255);
+    color: white;
+    padding-top: 1.5%;
+    text-align: center;
+    margin-left: 42%;
+    box-shadow: 0px 2px 10px -2px black;
+}
+
+.edit:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+}
+
+#check {
+    display: inline-block;
+    color: rgba(71, 115, 178, 255);
+
+}
+
+
+#filter {
+    margin-left: 5%;
+    background-color: white;
+    border: solid;
+    border-width: thin;
+    border-color: rgba(71, 115, 178, 255);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-decoration: none;
+    outline: none;
+    width: 18%;
+    height: 3em;
+}
+
+#filter2 {
+    background-color: white;
+    border: solid;
+    border-width: thin;
+    border-color: rgba(71, 115, 178, 255);
+    text-decoration: none;
+    outline: none;
+    font-size: 120%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+
+}
+
+#filter3 {
+    background-color: white;
+    border: solid;
+    border-width: thin;
+    border-color: rgba(71, 115, 178, 255);
+    text-decoration: none;
+    outline: none;
+    font-size: 120%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+}
+
+.filter-button {
+    background-color: #e67e22;
+    border-radius: 1rem;
+    margin-left: 1%;
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.filter-button2 {
+    background-color: rgba(71, 115, 178, 255);
+    border-radius: 0.5rem;
+    outline: none;
+    margin-top: 5%;
+    height: 2em;
+    margin-left: 5%;
+    display: inline-block;
+    position: sticky;
+    border-color: rgba(71, 115, 178, 255);
+    border-style: none;
+    color: white;
+    width: 3%;
+}
+
+.filter-button2:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+}
+
+.icon {
+    margin-top: 1.5%;
+    border-radius: 1rem;
+    margin-left: 45%;
+    align-content: center;
+    background-color: #eb984e;
+}
+
+#icon-client {
+    position: absolute;
+    color: rgba(71, 115, 178, 255);
+    font-size: 250%;
+    margin-left: 10%;
+    margin-top: 4%;
+
+}
+
+#icon-estado {
+    position: absolute;
+    color: rgba(71, 115, 178, 255);
+    font-size: 250%;
+    margin-left: 10%;
+    margin-top: 3%;
+
+}
+
+#icon-add {
+    position: absolute;
+    color: white;
+    font-size: 200%;
+    margin-left: 8%;
+    margin-top: -2%;
+
+}
+
+#icon-button {
+    margin-left: 25%;
+    margin-top: 2%;
+}
+
+.cont-nombre {
+    position: relative;
+}
+
+input.ng-invalid.ng-touched,
+input.ng-invalid.un-touched {
+    border: solid 2px tomato;
+}
+
+input.ng-valid {
+    border: solid 2px rgb(80, 71, 255);
+}

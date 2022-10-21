@@ -1,0 +1,121 @@
+<ng-template class="template" #content let-c="close" let-d="dismiss">
+    <form [formGroup]="myForm" (ngSubmit)="guardar(myForm)" errorTailor>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Opción</h4>
+            <button (click)="refresh()" type="button" class="btn-close" aria-label="Close"
+                (click)="d('Cross click')"></button>
+        </div>
+
+
+        <div class="modal-body" mat-icon>
+            <div class="cont-nombre">
+                <mat-icon id="icon-client">list</mat-icon>
+                <input class="controls" formControlName="cdopcion" type="text" placeholder="Ingrese nombre"
+                    [controlErrorsTpl]="Error">
+            </div>
+            <ng-template let-error let-text="text" #Error>
+                <!-- {{error|json}}{{text}} -->
+
+                <div *ngIf="error?.minlength">
+                    <i> <b>Error:</b>No comples con los caracteres minomos que son
+                        ({{error?.minlength?.requiredLength}}),ingresaste
+                        solo:({{error?.minlength?.actualLength}}) </i>
+                </div>
+            </ng-template>
+            <br>
+            <div class="cont-nombre">
+                <mat-icon id="icon-client">code</mat-icon>
+                <input class="controls" formControlName="dsurl" type="text" placeholder="Ingrese url">
+            </div>
+
+            <br>
+            <div class="cont-nombre">
+                <mat-icon id="icon-client">library_add</mat-icon>
+                <input class="controls" formControlName="dsicono" type="text" placeholder="Ingrese nombre del ícono"
+                    [controlErrorsTpl]="Error">
+            </div>
+            <br>
+            <div class="cont-nombre">
+                <h5 class="modal-title-2">Opción padre</h5>
+                <mat-icon id="icon-estado"> line_weight</mat-icon><select class="option" name="combo"
+                    formControlName="cdpadre" [controlErrorsTpl]="Error">
+                    <option value="s">Si</option>
+                    <option value="n">
+                        No
+                    </option>
+                </select>
+            </div>
+            <br>
+            <div class="cont-nombre">
+                <mat-icon id="icon-estado">ballot</mat-icon><select class="option" name="combo"
+                    formControlName="nmid_padre" [controlErrorsTpl]="Error">
+                    <option value=''>Ninguno</option>
+                    <option *ngFor="let item of datosOpcionPadre" [ngValue]="item.nmid">{{item.cdopcion}}</option>
+
+                </select>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button type="submit" [disabled]="myForm.invalid" class="save">
+                <abbr title="Guardar y agregar">
+                    <mat-icon id="icon-button">save add</mat-icon>
+                </abbr>
+            </button>
+
+            <button (click)="refresh()" type="submit" [disabled]="myForm.invalid" class="save-exit"
+                (click)="d('Cross click')" [disabled]="myForm.invalid">
+                <abbr title="Guardar y salir">
+                    <mat-icon id="icon-button">save subdirectory_arrow_right</mat-icon>
+                </abbr>
+            </button>
+            <button (click)="refresh()" class="close" type="button" (click)="d('Cross click')">
+                Cancelar
+            </button>
+
+
+        </div>
+    </form>
+</ng-template>
+
+
+
+<h3 id="titulo">Administrador de opciones</h3><br>
+<input class="from_control" id="filter" type="text" placeholder="Buscar..." [(ngModel)]="filterPost" name="filterPosts">
+
+<button class="lanzar" mat-icon (click)="open(content)" mat-list-item>
+    Nuevo<mat-icon id="icon-add"> add_circle</mat-icon>
+</button>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="table"
+    class="table table-bordered hover table-borderless">
+    <thead>
+        <tr>
+            <th style="text-align:center">Opcion</th>
+            <th style="text-align:center">Url</th>
+            <th style="text-align:center">Nombre ícono</th>
+            <th style="text-align:center">Padre</th>
+            <th style="text-align:center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="text-align:center;" *ngFor="let item of datosOpcion | filterRol:filterPost">
+            <td style="margin-top: 3%;">{{item.cdopcion}}</td>
+            <td style="margin-top: 3%;">{{item.dsurl}}</td>
+            <td style="margin-top: 3%;">{{item.dsicono}}</td>
+            <td style="margin-top: 3%;">{{item.cdpadre==='s'?'Si':'No'}}</td>
+            <td>
+
+                <button class="edit" mat-icon (click)="editar(item)" (click)="open(content)">
+                    <abbr title="Editar">
+                        <mat-icon>
+                            edit</mat-icon>
+                    </abbr>
+                </button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,118 @@
+<ng-template class="template" #content let-c="close" let-d="dismiss">
+    <form [formGroup]="myForm" (ngSubmit)="guardar(myForm)" errorTailor>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Agregar colaborador</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+
+
+        <div class="modal-body">
+
+
+            <div class="cont-nombre">
+                <mat-icon id="icon-client">account_circle</mat-icon>
+                <input class="controls" type="text" placeholder="Ingrese nombre del usuario" formControlName="cdusuario"
+                    [controlErrorsTpl]="Error">
+            </div>
+            <ng-template let-error let-text="text" #Error>
+                <!-- {{error|json}}{{text}} -->
+
+                <div *ngIf="error?.minlength">
+                    <i> <b>Error:</b>No comples con los caracteres minomos que son
+                        ({{error?.minlength?.requiredLength}}),ingresaste
+                        solo:({{error?.minlength?.actualLength}}) </i>
+                </div>
+            </ng-template>
+            <br>
+
+            <div class="cont-nombre">
+                <mat-icon id="icon-estado"> assignment_ind</mat-icon>
+                <select class="option" name="combo" formControlName="nmrolid_col" [controlErrorsTpl]="Error">
+                    <option *ngFor="let item of datosRoles" [ngValue]="item.nmid">{{item.cdrol}}</option>
+
+                </select>
+            </div>
+            <br>
+            <div class="cont-nombre">
+                <mat-icon id="icon-estado"> edit_attributes</mat-icon>
+                <select class="option" name="combo" formControlName="cdestado" [controlErrorsTpl]="Error">
+                    <option value="A">Activo</option>
+                    <option value="I">Inactivo</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="save" [disabled]="myForm.invalid">
+                <abbr title="Guardar y agregar">
+                    <mat-icon id="icon-button">save add</mat-icon>
+                </abbr>
+            </button>
+
+            <button (click)="refresh()" mat-icon type="submit" class="save-exit" (click)="d('Cross click')"
+                [disabled]="myForm.invalid">
+                <abbr title="Guardar y salir">
+                    <mat-icon id="icon-button">save subdirectory_arrow_right</mat-icon>
+                </abbr>
+            </button>
+            <button (click)="refresh()" class="close" type="button" (click)="d('Cross click')">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</ng-template>
+
+<br>
+
+<div>
+    <button class="filter-button2" routerLink="/administrador-de-proyectos" routerLinkActive='active' mat-icon>
+        <mat-icon style="margin-top: 10%;">arrow_back</mat-icon>
+    </button>
+    <h3 id="titulo">Asignación de colaboradores</h3>
+</div>
+<input class="from_control" id="filter" type="text" placeholder="Buscar..." [(ngModel)]="filterPost" name="filterPosts">
+<div id="form-client">
+    <h5 class="cliente">Cliente</h5>
+    <p id="filter3">{{dscliente}}</p>
+
+
+</div>
+
+<div id="form-proyec">
+    <h5 class="proyecto">Proyecto</h5>
+
+    <p id="filter3">{{dsproyecto}}</p>
+</div>
+
+
+<button class="lanzar" mat-icon (click)="open(content)" mat-list-item>
+    Nuevo<mat-icon id="icon-add"> add_circle</mat-icon>
+</button>
+
+<table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+    class="table table-bordered hover table-borderless">
+    <thead>
+        <tr>
+            <th style="text-align:center">Usuario</th>
+            <th style="text-align:center">Rol</th>
+            <th style="text-align:center">Estado</th>
+            <th style="text-align:center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of datosProyecto_Usuario | filterColaborator:filterPost">
+            <td style="margin-top: 3%; text-align: center;">{{item.cdusuario}}</td>
+            <td style="margin-top: 3%; text-align: center;">{{item.cdrol}}</td>
+            <td style="margin-top: 3%; text-align: center;">{{item.cdestado==='A'?'Activo':'Inactivo'}}
+            </td>
+            <td>
+
+                <button class="edit" mat-icon (click)="editar(item)" (click)="open(content)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

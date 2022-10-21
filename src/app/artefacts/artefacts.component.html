@@ -1,0 +1,127 @@
+<ng-template class="template " #content let-c="close" let-d="dismiss">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar artefacto</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+
+
+    <div class="modal-body ">
+
+        <div class="cont-nombre">
+            <mat-icon id="icon-estado">data_usage</mat-icon>
+            <select class="option" name="combo">
+                <option value="A">Proceso1</option>
+                <option value="I">Proceso2</option>
+            </select>
+        </div>
+        <br>
+
+
+        <table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+            class="table table-bordered hover table-borderless">
+            <thead>
+                <tr>
+                    <th id="filter-table" colspan="3"><input class="from_control" id="filter" type="text"
+                            placeholder="Buscar...">
+                    </th>
+                </tr>
+                <tr>
+
+                    <th style="text-align:center">Artefacto</th>
+                    <th style="text-align:center">Aplica</th>
+                    <th style="text-align:center;">Razón</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="margin-top: 3%; text-align: center;">Artfacto1</td>
+                    <td style="margin-top: 3%; text-align: center;">
+                        <div class="form-check form-switch" id="check">
+                            <input style="height: 20px; width: 50px;" mdbCheckbox class="form-check-input"
+                                type="checkbox" id="flexSwitchCheckChecked" [checked]="true" />
+                        </div>
+                    <td style="margin-top: 3%; text-align: center;"><input class="input-razon" type="text"
+                            placeholder="Ingrese razón"></td>
+
+
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="save">
+            <abbr title="Guardar y agregar">
+                <mat-icon id="icon-button">save add</mat-icon>
+            </abbr>
+        </button>
+
+        <button mat-icon type="submit" class="save-exit" (click)="d('Cross click')">
+            <abbr title="Guardar y salir">
+                <mat-icon id="icon-button">save subdirectory_arrow_right</mat-icon>
+            </abbr>
+        </button>
+        <button class="close" type="button" (click)="d('Cross click')">
+            Cancelar
+        </button>
+    </div>
+
+</ng-template>
+
+<br>
+
+<div>
+    <button class="filter-button2" routerLink="/administrador-de-proyectos" routerLinkActive='active' mat-icon>
+        <mat-icon style="margin-top: 10%;">arrow_back</mat-icon>
+    </button>
+    <h3 id="titulo">Artefactos del proyecto</h3>
+</div>
+<input class="from_control" id="filter" type="text" placeholder="Buscar..." [(ngModel)]="filterPost" name="filterPosts">
+<div id="form-client">
+    <h5 class="cliente">Cliente</h5>
+    <label id="filter2" type="text">Hola</label>
+
+
+</div>
+
+<div id="form-proyec">
+    <h5 class="proyecto">Proyecto</h5>
+
+    <label id="filter3" type="text">Hola</label>
+</div>
+
+<button class="lanzar" mat-icon (click)="open(content)" mat-list-item>
+    Nuevo<mat-icon id="icon-add"> add_circle</mat-icon>
+</button>
+
+<table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+    class="table table-bordered hover table-borderless">
+    <thead>
+        <tr>
+            <th style="text-align:center">Proceso</th>
+            <th style="text-align:center">Artefacto</th>
+            <th style="text-align:center; width: 34%;">Razón</th>
+            <th style="text-align:center; width: 11.5%;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of datosArtefacto | filterArtefact:filterPost">
+            <td style="margin-top: 3%; text-align: center;">{{item.dsproceso}}</td>
+            <td style="margin-top: 3%; text-align: center;">{{item.dsartefacto}}</td>
+            <td style="margin-top: 3%; text-align: center;">{{item.dsobservacion}}</td>
+
+            <td style="margin-top: 3%; text-align: center;">
+
+                <button class=" edit" mat-icon (click)="open(content)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>

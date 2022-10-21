@@ -1,0 +1,211 @@
+.card {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+#titulo {
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+#titulo-hijo {
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 2%;
+    display: inline-block;
+    font-weight: bolder;
+}
+
+.filter-button2 {
+    background-color: rgba(71, 115, 178, 255);
+    border-radius: 0.5rem;
+    outline: none;
+    margin-top: 2%;
+    height: 2em;
+    margin-left: 5%;
+    display: inline-block;
+    position: sticky;
+    border-color: rgba(71, 115, 178, 255);
+    border-style: none;
+    color: white;
+    width: 3%;
+}
+
+.filter-button2:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+}
+
+#rol {
+    align-items: center;
+    margin-left: 5%;
+    width: 18%;
+}
+
+#filter {
+    background-color: white;
+    border: solid;
+    border-width: thin;
+    border-color: rgba(71, 115, 178, 255);
+    text-decoration: none;
+    outline: none;
+    font-size: 120%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+}
+
+#cont-padre {
+    display: inline-block;
+    width: 60%;
+}
+
+#cont-hijo {
+    position: fixed;
+    top: 0;
+    left: 58%;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all ease-out .5s;
+    transform: translateX(100%);
+    box-shadow: 0px 2px 10px -2px black;
+    margin-top: 4%;
+
+    &.active {
+        transform: translateX(0);
+    }
+}
+
+#cdopcion {
+    display: inline-block;
+    width: 80%;
+    font-weight: bolder;
+}
+
+#estado {
+    display: inline-block;
+    width: 20%;
+}
+
+#btn-mostrar {
+    background-color: rgba(71, 115, 178, 255);
+    width: 7%;
+    border-radius: 0.5rem;
+    display: inline-block;
+    border: solid;
+    border-width: thin;
+    border-color: rgba(71, 115, 178, 255);
+    color: white;
+    padding-top: 1.5%;
+    text-align: center;
+    box-shadow: 0px 2px 10px -2px black
+}
+
+#btn-mostrar:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+}
+
+.save-exit {
+    background-color: rgba(71, 115, 178, 255);
+    color: white;
+    border-radius: 0.5rem;
+    width: 20%;
+    height: 50px;
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    outline: none;
+    border-color: rgba(71, 115, 178, 255);
+    display: inline-block;
+    margin-top: 2%;
+    box-shadow: 0px 2px 10px -2px black;
+    text-align: center;
+    margin: 5%;
+}
+
+.save-exit:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+    box-shadow: 0px 2px 10px -2px black
+}
+
+.close {
+    background-color: rgba(71, 115, 178, 255);
+    color: white;
+    border-radius: 0.5rem;
+    width: 20%;
+    height: 50px;
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    outline: none;
+    border-color: rgba(71, 115, 178, 255);
+    display: inline-block;
+    margin-top: 2%;
+    box-shadow: 0px 2px 10px -2px black;
+    margin: 5%;
+}
+
+.close:hover {
+    background-color: rgba(105, 188, 187, 255);
+    color: white;
+    box-shadow: 0px 2px 10px -2px black
+}
+
+#checkbox {
+    width: 10%;
+}
+
+.option {
+    background-color: white;
+    border-color: rgba(71, 115, 178, 255);
+    color: rgba(71, 115, 178, 255);
+    width: 30%;
+    height: calc(10vh - 6px);
+    margin-left: 3%;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    align-items: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    align-content: center;
+    font-size: large;
+}
+
+#table {
+    border-radius: 1rem;
+    margin-top: 2%;
+    width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    box-shadow: 0px 2px 10px -6px black;
+    font-size: large;
+}
+
+
+tbody {
+    border-radius: 1rem;
+
+}
+
+th {
+    background-color: rgba(243, 244, 246, 255);
+    border: none;
+    border-top: white;
+}
+
+td {
+    background-color: white;
+    border-color: white;
+}
